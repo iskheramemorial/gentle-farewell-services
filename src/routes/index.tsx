@@ -1340,6 +1340,186 @@ function FloatingButtons() {
   );
 }
 
+function ServiceDetails() {
+  return (
+    <section id="service-details" className="relative bg-muted/30 py-24 md:py-32">
+      <SectionHeading
+        eyebrow="Detailed Services"
+        title={
+          <>
+            Every service, <span className="italic text-gold">explained with care</span>
+          </>
+        }
+        description="Transparent details about what we do, how we do it, and the areas of Delhi NCR we serve — so you know exactly what to expect when you call."
+      />
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-6 px-5 lg:grid-cols-2"
+      >
+        {SERVICE_DETAILS.map((s) => (
+          <motion.article
+            key={s.id}
+            id={s.id}
+            variants={fadeUp}
+            className="group rounded-2xl border border-border bg-card p-8 shadow-sm transition hover:shadow-elegant"
+          >
+            <div className="flex items-start gap-4">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-navy text-gold">
+                <s.icon className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-semibold text-navy">
+                  {s.title}
+                </h3>
+                <p className="mt-1 text-sm text-gold/90">{s.short}</p>
+              </div>
+            </div>
+            <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
+              {s.body.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={TEL}
+                className="inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-navy-deep"
+              >
+                <Phone className="h-3.5 w-3.5" /> Call {PHONE}
+              </a>
+              <a
+                href="#faq"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-navy transition hover:border-gold"
+              >
+                Read FAQ <ChevronRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </motion.article>
+        ))}
+      </motion.div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section id="faq" className="relative py-24 md:py-32">
+      <SectionHeading
+        eyebrow="Frequently Asked Questions"
+        title={
+          <>
+            Answers when you <span className="italic text-gold">need them most</span>
+          </>
+        }
+        description="Common questions about our dead dog and cat pickup, cremation, burial and memorial services across Delhi NCR."
+      />
+      <div className="mx-auto mt-14 max-w-3xl px-5">
+        {FAQS.map((f, i) => {
+          const isOpen = open === i;
+          return (
+            <div
+              key={f.q}
+              className="border-b border-border last:border-b-0"
+            >
+              <button
+                type="button"
+                onClick={() => setOpen(isOpen ? null : i)}
+                className="flex w-full items-start justify-between gap-4 py-5 text-left"
+                aria-expanded={isOpen}
+              >
+                <span className="font-display text-lg font-semibold text-navy">
+                  {f.q}
+                </span>
+                <ChevronDown
+                  className={`mt-1 h-5 w-5 shrink-0 text-gold transition-transform ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden"
+                  >
+                    <p className="pb-5 pr-8 text-sm leading-relaxed text-muted-foreground">
+                      {f.a}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={TEL}
+            className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-navy shadow-gold transition hover:brightness-110"
+          >
+            <Phone className="h-4 w-4" /> Call 24×7 — {PHONE}
+          </a>
+          <a
+            href={WA}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 rounded-full border border-navy/20 px-6 py-3 text-sm font-semibold text-navy transition hover:border-gold"
+          >
+            <MessageCircle className="h-4 w-4" /> WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EmergencyCTA() {
+  return (
+    <section className="relative gradient-navy py-20 text-white">
+      <div className="mx-auto max-w-5xl px-5 text-center">
+        <SectionLabel>24×7 Emergency Helpline</SectionLabel>
+        <h2 className="mt-5 font-display text-3xl md:text-4xl font-medium leading-tight">
+          Need urgent dead animal pickup in Delhi NCR?
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-sm text-white/75">
+          Our team is on standby around the clock. Call or WhatsApp now — we
+          will reach you anywhere in Delhi NCR with discretion, hygiene and
+          respect.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={TEL}
+            className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-4 text-sm font-semibold text-navy shadow-gold transition hover:brightness-110"
+          >
+            <Phone className="h-4 w-4" /> Call {PHONE}
+          </a>
+          <a
+            href={WA}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-7 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            <MessageCircle className="h-4 w-4" /> WhatsApp Us
+          </a>
+          <a
+            href={MAPS}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-7 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            <MapPin className="h-4 w-4" /> Visit Location
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
@@ -1347,13 +1527,16 @@ function Index() {
       <main>
         <Hero />
         <Services />
+        <ServiceDetails />
         <HowItWorks />
         <About />
         <Leadership />
         <Gallery />
         <WhyChooseUs />
         <Coverage />
+        <EmergencyCTA />
         <Testimonials />
+        <FAQSection />
         <Contact />
       </main>
       <Footer />
