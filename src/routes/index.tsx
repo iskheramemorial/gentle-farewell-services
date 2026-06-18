@@ -13,6 +13,7 @@ import {
   Flame,
   Trees,
   ChevronRight,
+  ChevronDown,
   Menu,
   X,
   Quote,
@@ -33,43 +34,264 @@ import g4 from "@/assets/gallery-4.jpg";
 import g5 from "@/assets/gallery-5.jpg";
 import g6 from "@/assets/gallery-6.jpg";
 
+const SERVICE_AREAS = [
+  "Delhi NCR",
+  "Shahdara",
+  "Seelampur",
+  "Bhajanpura",
+  "Yamuna Vihar",
+  "Kardampuri",
+  "Gokulpuri",
+  "Welcome",
+  "Jaffrabad",
+  "Maujpur",
+  "Krishna Nagar",
+  "Karawal Nagar",
+  "Mustafabad",
+  "New Delhi",
+  "East Delhi",
+  "North East Delhi",
+  "Noida",
+  "Ghaziabad",
+];
+
+const FAQS = [
+  {
+    q: "What should I do if I find a dead dog or cat in Delhi?",
+    a: "Stay calm and avoid handling the animal directly. Call I.S. Khera Memorial Trust at 8882650591 — our 24×7 dead dog and dead cat pickup team will reach your location anywhere in Delhi NCR with protective equipment and a dedicated vehicle to remove the animal hygienically and respectfully.",
+  },
+  {
+    q: "How quickly can your team arrive for dead animal pickup in Delhi NCR?",
+    a: "Our average response time across Shahdara, Seelampur, Bhajanpura, Yamuna Vihar, Kardampuri and surrounding areas is 30–60 minutes. For nearby areas in Delhi NCR, we typically reach within 60–90 minutes, 24 hours a day, every day of the year.",
+  },
+  {
+    q: "Do you provide cremation services for dogs and cats?",
+    a: "Yes. We offer dignified individual and communal cremation services for dogs, cats and other small animals. Final rites are performed respectfully, and the family can be present if they wish. Ashes can be collected on request for private cremations.",
+  },
+  {
+    q: "Do you provide burial services for pets?",
+    a: "Yes. We arrange respectful animal burial in designated, well-kept grounds. Each burial is conducted with care, hygiene and the dignity your companion deserves.",
+  },
+  {
+    q: "Which areas in Delhi NCR do you cover?",
+    a: "We cover all of Delhi NCR including Shahdara, Seelampur, Bhajanpura, Yamuna Vihar, Kardampuri, Gokulpuri, Welcome, Jaffrabad, Maujpur, Krishna Nagar, Karawal Nagar, Mustafabad, East Delhi, North East Delhi, New Delhi, Noida and Ghaziabad. If your area isn't listed, call us — we'll do our best to help.",
+  },
+  {
+    q: "What are your operating hours?",
+    a: "We operate 24 hours a day, 7 days a week, including all public holidays. Death and loss don't follow a schedule — neither do we.",
+  },
+  {
+    q: "How can I contact your team for emergency animal pickup?",
+    a: "Call or WhatsApp our 24×7 helpline at 8882650591. You can also reach us through the contact form on this website or visit our address at Khera Banquet Hall, Shahdara Tezab Mill, Delhi - 110032.",
+  },
+];
+
+const SERVICE_DETAILS = [
+  {
+    id: "dead-dog-pickup",
+    icon: Truck,
+    title: "Dead Dog Pickup Service in Delhi NCR",
+    short: "24×7 respectful pickup of deceased dogs across Delhi NCR.",
+    body: [
+      "Finding a deceased dog — whether your beloved pet at home or a stray on the road — is emotionally difficult and raises immediate public health concerns. I.S. Khera Memorial Trust provides professional dead dog pickup services across Delhi NCR, 24 hours a day, 7 days a week, including Shahdara, Seelampur, Bhajanpura, Yamuna Vihar, Kardampuri and all nearby areas.",
+      "Our trained team arrives in a dedicated, sanitised vehicle with full protective equipment. Every deceased dog is handled with the same respect we would offer a human family member — lifted carefully, wrapped in clean cloth, and transported discreetly. We never expose the animal to public view during transport.",
+      "We coordinate the entire process from your first call through to final cremation or burial. Families dealing with the loss of a pet receive priority emotional support; stray dog pickups are conducted with the same dignity, because every life matters. Call 8882650591 for immediate pickup anywhere in Delhi NCR.",
+    ],
+  },
+  {
+    id: "dead-cat-pickup",
+    icon: Truck,
+    title: "Dead Cat Pickup Service in Delhi NCR",
+    short: "Hygienic, dignified pickup of deceased cats anywhere in Delhi.",
+    body: [
+      "Cats hold a special place in many families, and losing one is painful. Our dead cat pickup service across Delhi NCR ensures that your companion — or any deceased cat you have found — is collected promptly, handled with compassion, and given a proper farewell.",
+      "We serve every neighbourhood in Delhi including Shahdara, Seelampur, Yamuna Vihar, Bhajanpura, Kardampuri, Krishna Nagar and the wider NCR. Our team is equipped with dedicated cat carriers, biohazard-safe materials and trained handlers who understand both hygiene protocols and emotional sensitivity.",
+      "Following pickup, families can choose between individual cremation, communal cremation or a respectful burial. We document each step, maintain strict sanitisation of vehicles and equipment, and never leave the family with questions unanswered. Available 24×7 at 8882650591.",
+    ],
+  },
+  {
+    id: "animal-cremation",
+    icon: Flame,
+    title: "Animal Cremation Service in Delhi",
+    short: "Dignified individual and communal cremation with proper final rites.",
+    body: [
+      "Our animal cremation service in Delhi is conducted with the same reverence as any final rite. Each cremation is performed at a clean, dedicated facility under trained supervision. Families may choose individual cremation — where the ashes belong only to your pet and can be returned to you — or communal cremation for stray and unclaimed animals.",
+      "Every cremation begins with a brief moment of respect: a final blessing, a placed flower, and the family's words if they wish to be present. We coordinate cremation timings around your needs and offer both daytime and night services, recognising that grief does not wait for office hours.",
+      "Beyond the ceremony itself, we handle paperwork, transportation, sanitisation and ash collection. Our cremation services are available for dogs, cats, and other small animals across Delhi NCR including Shahdara, Seelampur, Bhajanpura, Yamuna Vihar, Kardampuri and surrounding areas. Call 8882650591 to arrange a cremation today.",
+    ],
+  },
+  {
+    id: "animal-burial",
+    icon: Trees,
+    title: "Animal Burial Service in Delhi NCR",
+    short: "Respectful pet burial in designated, well-maintained grounds.",
+    body: [
+      "For families who prefer burial as a final farewell, I.S. Khera Memorial Trust offers a respectful animal burial service across Delhi NCR. Each grave is dug carefully in designated, well-kept grounds. Burials follow hygienic protocols and any religious or personal observances the family wishes to include.",
+      "We provide simple grave markers on request, allowing families to visit, remember and place flowers. Our team handles the deceased animal with reverence from collection through to interment — no part of the process is treated as routine work.",
+      "Whether you live in Shahdara, Yamuna Vihar, Bhajanpura, Kardampuri, Seelampur or anywhere in Delhi NCR, we will guide you through every step. Pet burial bookings can be arranged on the same day in most cases. Call 8882650591 to schedule.",
+    ],
+  },
+  {
+    id: "memorial",
+    icon: Heart,
+    title: "Animal Memorial Service in Delhi",
+    short: "Personalised memorial ceremonies to honour your companion's life.",
+    body: [
+      "A memorial is a chance to gather, share memories, and acknowledge how much an animal meant to a family. Our animal memorial service in Delhi creates a quiet, dignified space — with lamps, flowers and meaningful tributes — where families can say goodbye on their own terms.",
+      "We coordinate small home memorials, on-site memorials at our facility, and combined ceremonies that include cremation or burial. Families can include their faith traditions, music, photos and personal words. Our team handles every logistical detail so you can focus on remembering.",
+      "Memorial services are available across Delhi NCR including Shahdara, Seelampur, Bhajanpura, Yamuna Vihar, Kardampuri and nearby areas. Pricing is transparent and shared upfront. Speak with our team at 8882650591 to plan a memorial that truly honours your companion.",
+    ],
+  },
+  {
+    id: "emergency",
+    icon: Clock,
+    title: "24×7 Emergency Animal Pickup in Delhi NCR",
+    short: "Round-the-clock emergency response for dead dogs, cats and animals.",
+    body: [
+      "Emergencies don't follow business hours. Our 24×7 emergency animal pickup service in Delhi NCR responds to calls at midnight, on holidays, and during festivals — whenever you need us. A small dedicated dispatch team monitors our helpline at 8882650591 around the clock.",
+      "We treat every emergency call as a priority. Whether it is a road accident involving a stray, a pet who has passed at home unexpectedly, or a society reporting a deceased animal in a public area, our team will reach you, handle the situation hygienically, and conduct the final rites with care.",
+      "Emergency coverage spans Shahdara, Seelampur, Bhajanpura, Yamuna Vihar, Kardampuri, Krishna Nagar, Karawal Nagar, Mustafabad, East Delhi and the wider NCR including Noida and Ghaziabad. Save 8882650591 in your phone — when the moment comes, you'll know exactly who to call.",
+    ],
+  },
+];
+
+const LOCAL_BUSINESS_LD = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "EmergencyService"],
+  "@id": "/#organization",
+  name: "I.S. Khera Memorial Trust",
+  alternateName: "Khera Memorial Trust",
+  description:
+    "24×7 dead dog and cat pickup, cremation, burial and memorial services across Delhi NCR.",
+  url: "/",
+  telephone: "+918882650591",
+  email: "info@iskheratrust.org",
+  priceRange: "₹₹",
+  image: "/og-image.jpg",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Khera Banquet Hall, Shahdara Tezab Mill",
+    addressLocality: "Delhi",
+    addressRegion: "DL",
+    postalCode: "110032",
+    addressCountry: "IN",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: 28.6914, longitude: 77.289 },
+  areaServed: SERVICE_AREAS.map((name) => ({ "@type": "Place", name })),
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+918882650591",
+      contactType: "Emergency",
+      availableLanguage: ["en", "hi"],
+      areaServed: "IN",
+      contactOption: "TollFree",
+    },
+  ],
+  sameAs: [],
+};
+
+const ORGANIZATION_LD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "I.S. Khera Memorial Trust",
+  url: "/",
+  logo: "/og-image.jpg",
+  founder: [
+    { "@type": "Person", name: "Jaspal Singh Khera", jobTitle: "Chairman" },
+    { "@type": "Person", name: "Himanshu Bhasin", jobTitle: "Vice Chairman" },
+  ],
+};
+
+const WEBSITE_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "I.S. Khera Memorial Trust",
+  url: "/",
+  inLanguage: "en-IN",
+};
+
+const SERVICE_LD = SERVICE_DETAILS.map((s) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: s.title,
+  provider: { "@type": "LocalBusiness", name: "I.S. Khera Memorial Trust" },
+  areaServed: SERVICE_AREAS.map((name) => ({ "@type": "Place", name })),
+  description: s.body[0],
+  availableChannel: {
+    "@type": "ServiceChannel",
+    servicePhone: "+918882650591",
+    availableLanguage: ["en", "hi"],
+  },
+}));
+
+const FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "I.S. Khera Memorial Trust — Dignified Final Farewell for Animals" },
+      {
+        title:
+          "I.S. Khera Memorial Trust | Dead Dog & Cat Pickup, Cremation & Burial Services Delhi NCR",
+      },
       {
         name: "description",
         content:
-          "Respectful pickup, transportation, cremation and burial services for deceased dogs and cats across Delhi NCR. 24×7 emergency response: 8882650591.",
+          "24×7 dead dog and cat pickup services in Delhi NCR. Professional animal cremation, burial and memorial services. Call 8882650591.",
       },
-      { property: "og:title", content: "I.S. Khera Memorial Trust" },
+      {
+        property: "og:title",
+        content:
+          "I.S. Khera Memorial Trust | Dead Dog & Cat Pickup, Cremation & Burial Services Delhi NCR",
+      },
       {
         property: "og:description",
         content:
-          "Dignified final farewell — pickup, cremation and burial services for dogs and cats across Delhi NCR. 24×7.",
+          "24×7 dead dog and cat pickup, cremation and burial services across Delhi NCR. Respectful animal memorial services. Call 8882650591.",
       },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: heroImg },
+      { property: "og:image:alt", content: "Dignified animal memorial setting with marigolds and candles" },
+      { name: "twitter:image", content: heroImg },
+      { name: "twitter:image:alt", content: "I.S. Khera Memorial Trust" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "/" },
+      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
+    ],
     scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: "I.S. Khera Memorial Trust",
-          description: "Dead dog & cat memorial services — pickup, cremation and burial across Delhi NCR.",
-          telephone: "+918882650591",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Khera Banquet Hall, Shahdara Tezab Mill",
-            addressLocality: "Delhi",
-            postalCode: "110032",
-            addressCountry: "IN",
-          },
-          openingHours: "Mo-Su 00:00-23:59",
-        }),
-      },
+      { type: "application/ld+json", children: JSON.stringify(LOCAL_BUSINESS_LD) },
+      { type: "application/ld+json", children: JSON.stringify(ORGANIZATION_LD) },
+      { type: "application/ld+json", children: JSON.stringify(WEBSITE_LD) },
+      { type: "application/ld+json", children: JSON.stringify(FAQ_LD) },
+      ...SERVICE_LD.map((s) => ({
+        type: "application/ld+json" as const,
+        children: JSON.stringify(s),
+      })),
     ],
   }),
   component: Index,
@@ -82,10 +304,10 @@ const MAPS = "https://maps.app.goo.gl/N2zWJto9xRWsnZnj9";
 
 const NAV = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Leadership", href: "#leadership" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "About", href: "#about" },
+  { label: "Areas", href: "#coverage" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -755,7 +977,7 @@ function Coverage() {
     "Nearby Areas",
   ];
   return (
-    <section className="relative py-24 md:py-32">
+    <section id="coverage" className="relative py-24 md:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 lg:grid-cols-2 lg:items-center">
         <motion.div
           variants={stagger}
@@ -1118,6 +1340,186 @@ function FloatingButtons() {
   );
 }
 
+function ServiceDetails() {
+  return (
+    <section id="service-details" className="relative bg-muted/30 py-24 md:py-32">
+      <SectionHeading
+        eyebrow="Detailed Services"
+        title={
+          <>
+            Every service, <span className="italic text-gold">explained with care</span>
+          </>
+        }
+        description="Transparent details about what we do, how we do it, and the areas of Delhi NCR we serve — so you know exactly what to expect when you call."
+      />
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-6 px-5 lg:grid-cols-2"
+      >
+        {SERVICE_DETAILS.map((s) => (
+          <motion.article
+            key={s.id}
+            id={s.id}
+            variants={fadeUp}
+            className="group rounded-2xl border border-border bg-card p-8 shadow-sm transition hover:shadow-elegant"
+          >
+            <div className="flex items-start gap-4">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-navy text-gold">
+                <s.icon className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-semibold text-navy">
+                  {s.title}
+                </h3>
+                <p className="mt-1 text-sm text-gold/90">{s.short}</p>
+              </div>
+            </div>
+            <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
+              {s.body.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={TEL}
+                className="inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-navy-deep"
+              >
+                <Phone className="h-3.5 w-3.5" /> Call {PHONE}
+              </a>
+              <a
+                href="#faq"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-navy transition hover:border-gold"
+              >
+                Read FAQ <ChevronRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </motion.article>
+        ))}
+      </motion.div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section id="faq" className="relative py-24 md:py-32">
+      <SectionHeading
+        eyebrow="Frequently Asked Questions"
+        title={
+          <>
+            Answers when you <span className="italic text-gold">need them most</span>
+          </>
+        }
+        description="Common questions about our dead dog and cat pickup, cremation, burial and memorial services across Delhi NCR."
+      />
+      <div className="mx-auto mt-14 max-w-3xl px-5">
+        {FAQS.map((f, i) => {
+          const isOpen = open === i;
+          return (
+            <div
+              key={f.q}
+              className="border-b border-border last:border-b-0"
+            >
+              <button
+                type="button"
+                onClick={() => setOpen(isOpen ? null : i)}
+                className="flex w-full items-start justify-between gap-4 py-5 text-left"
+                aria-expanded={isOpen}
+              >
+                <span className="font-display text-lg font-semibold text-navy">
+                  {f.q}
+                </span>
+                <ChevronDown
+                  className={`mt-1 h-5 w-5 shrink-0 text-gold transition-transform ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden"
+                  >
+                    <p className="pb-5 pr-8 text-sm leading-relaxed text-muted-foreground">
+                      {f.a}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={TEL}
+            className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-navy shadow-gold transition hover:brightness-110"
+          >
+            <Phone className="h-4 w-4" /> Call 24×7 — {PHONE}
+          </a>
+          <a
+            href={WA}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 rounded-full border border-navy/20 px-6 py-3 text-sm font-semibold text-navy transition hover:border-gold"
+          >
+            <MessageCircle className="h-4 w-4" /> WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EmergencyCTA() {
+  return (
+    <section className="relative gradient-navy py-20 text-white">
+      <div className="mx-auto max-w-5xl px-5 text-center">
+        <SectionLabel>24×7 Emergency Helpline</SectionLabel>
+        <h2 className="mt-5 font-display text-3xl md:text-4xl font-medium leading-tight">
+          Need urgent dead animal pickup in Delhi NCR?
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-sm text-white/75">
+          Our team is on standby around the clock. Call or WhatsApp now — we
+          will reach you anywhere in Delhi NCR with discretion, hygiene and
+          respect.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={TEL}
+            className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-4 text-sm font-semibold text-navy shadow-gold transition hover:brightness-110"
+          >
+            <Phone className="h-4 w-4" /> Call {PHONE}
+          </a>
+          <a
+            href={WA}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-7 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            <MessageCircle className="h-4 w-4" /> WhatsApp Us
+          </a>
+          <a
+            href={MAPS}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-7 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            <MapPin className="h-4 w-4" /> Visit Location
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
@@ -1125,13 +1527,16 @@ function Index() {
       <main>
         <Hero />
         <Services />
+        <ServiceDetails />
         <HowItWorks />
         <About />
         <Leadership />
         <Gallery />
         <WhyChooseUs />
         <Coverage />
+        <EmergencyCTA />
         <Testimonials />
+        <FAQSection />
         <Contact />
       </main>
       <Footer />
