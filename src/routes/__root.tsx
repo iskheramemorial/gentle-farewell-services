@@ -77,19 +77,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "I.S. Khera Memorial Trust — Dignified Final Farewell for Animals" },
+      {
+        name: "description",
+        content:
+          "Respectful pickup, transportation, cremation and burial services for deceased dogs and cats across Delhi NCR. 24×7 emergency response.",
+      },
+      { name: "author", content: "I.S. Khera Memorial Trust" },
+      { property: "og:title", content: "I.S. Khera Memorial Trust" },
+      {
+        property: "og:description",
+        content: "Dignified final farewell, cremation and burial services for dogs and cats across Delhi NCR.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:site_name", content: "I.S. Khera Memorial Trust" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
       },
     ],
   }),
