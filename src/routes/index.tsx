@@ -977,6 +977,7 @@ function Coverage() {
   ];
   return (
     <section id="coverage" className="relative py-24 md:py-32">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 lg:grid-cols-2 lg:items-center">
         <motion.div
           variants={stagger}
           initial="hidden"
