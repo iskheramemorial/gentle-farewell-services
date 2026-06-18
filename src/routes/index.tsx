@@ -976,8 +976,7 @@ function Coverage() {
     "Nearby Areas",
   ];
   return (
-    <section className="relative py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 lg:grid-cols-2 lg:items-center">
+    <section id="coverage" className="relative py-24 md:py-32">
         <motion.div
           variants={stagger}
           initial="hidden"
