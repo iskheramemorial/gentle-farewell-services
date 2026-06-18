@@ -13,6 +13,7 @@ import {
   Flame,
   Trees,
   ChevronRight,
+  ChevronDown,
   Menu,
   X,
   Quote,
