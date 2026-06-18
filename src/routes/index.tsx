@@ -303,10 +303,10 @@ const MAPS = "https://maps.app.goo.gl/N2zWJto9xRWsnZnj9";
 
 const NAV = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Leadership", href: "#leadership" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "About", href: "#about" },
+  { label: "Areas", href: "#coverage" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
