@@ -356,7 +356,7 @@ function Navbar() {
         >
           <a href="#home" className="flex items-center gap-3">
             <div className="grid h-11 w-11 place-items-center rounded-full border border-gold/60 bg-navy-deep">
-              <span className="font-display text-lg font-semibold text-gold">IK</span>
+              <span className="font-display text-lg font-semibold text-gold">ISK</span>
             </div>
             <div className="hidden sm:block leading-tight">
               <div className="font-display text-base font-semibold text-white">
@@ -1236,7 +1236,7 @@ function Footer() {
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
             <div className="grid h-12 w-12 place-items-center rounded-full border border-gold/60">
-              <span className="font-display text-lg font-semibold text-gold">IK</span>
+              <span className="font-display text-lg font-semibold text-gold">ISK</span>
             </div>
             <div>
               <div className="font-display text-lg text-white">I.S. Khera Memorial Trust</div>
