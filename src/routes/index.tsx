@@ -25,8 +25,8 @@ import {
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-memorial.jpg";
-import chairmanAsset from "@/assets/chairman.asset.json";
-import vicechairmanAsset from "@/assets/vicechairman.asset.json";
+import chairmanImg from "@/assets/chairman.jpeg";
+import vicechairmanImg from "@/assets/vicechairman.png";
 import g1 from "@/assets/gallery-1.jpg";
 import g2 from "@/assets/gallery-2.jpg";
 import g3 from "@/assets/gallery-3.jpg";
