@@ -774,13 +774,13 @@ function Leadership() {
     {
       name: "Jaspal Singh Khera",
       role: "Chairman",
-      image: chairmanAsset.url,
+      image: chairmanImg,
       desc: "Leading the mission to serve voiceless souls with respect and compassion across Delhi NCR.",
     },
     {
       name: "Himanshu Bhasin",
       role: "Vice Chairman",
-      image: vicechairmanAsset.url,
+      image: vicechairmanImg,
       desc: "Dedicated to animal welfare and ensuring every life gets a dignified farewell.",
     },
   ];
