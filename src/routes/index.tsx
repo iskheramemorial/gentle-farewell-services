@@ -1129,7 +1129,7 @@ function Contact() {
             {
               icon: MapPin,
               title: "Address",
-              value: "Khera Banquet Hall, Shahdara Tezab Mill, Delhi - 110032",
+              value: "28/18A/110, Bhola Nath Nagar Near Shahdara, Metro Station, Delhi- 110032",
               href: MAPS,
               cta: "Open in Maps",
             },
