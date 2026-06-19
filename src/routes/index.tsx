@@ -80,7 +80,7 @@ const FAQS = [
   },
   {
     q: "How can I contact your team for emergency animal pickup?",
-    a: "Call or WhatsApp our 24×7 helpline at 8882650591. You can also reach us through the contact form on this website or visit our address at Khera Banquet Hall, Shahdara Tezab Mill, Delhi - 110032.",
+    a: "Call or WhatsApp our 24×7 helpline at 8882650591. You can also reach us through the contact form on this website or visit our address at 28/18A/110, Bhola Nath Nagar Near Shahdara, Metro Station, Delhi- 110032.",
   },
 ];
 
