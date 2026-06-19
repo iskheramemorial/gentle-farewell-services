@@ -25,8 +25,6 @@ import {
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-memorial.jpg";
-import chairmanImg from "@/assets/chairman.png";
-import vicechairmanImg from "@/assets/vicechairman.png";
 import g1 from "@/assets/gallery-1.jpg";
 import g2 from "@/assets/gallery-2.jpg";
 import g3 from "@/assets/gallery-3.jpg";
@@ -770,21 +768,20 @@ function About() {
 }
 
 function Leadership() {
-  const leaders = [
-    {
-      name: "Jaspal Singh Khera",
-      role: "Chairman",
-      image: chairmanImg,
-      desc: "Leading the mission to serve voiceless souls with respect and compassion across Delhi NCR.",
-    },
-    {
-      name: "Himanshu Bhasin",
-      role: "Vice Chairman",
-      image: vicechairmanImg,
-      desc: "Dedicated to animal welfare and ensuring every life gets a dignified farewell.",
-    },
-  ];
-
+ const leaders = [
+  {
+    name: "Jaspal Singh Khera",
+    role: "Chairman",
+    image: "/chairman.png",   // ← plain string, no import needed
+    desc: "Leading the mission to serve voiceless souls with respect and compassion across Delhi NCR.",
+  },
+  {
+    name: "Himanshu Bhasin",
+    role: "Vice Chairman",
+    image: "/vicechairman.png",  // ← plain string
+    desc: "Dedicated to animal welfare and ensuring every life gets a dignified farewell.",
+  },
+];
   return (
     <section id="leadership" className="relative bg-muted/40 py-24 md:py-32">
       <SectionHeading
