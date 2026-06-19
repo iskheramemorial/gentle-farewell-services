@@ -1291,12 +1291,12 @@ function Footer() {
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 text-gold" />
               <a href={MAPS} target="_blank" rel="noopener" className="hover:text-gold">
-                Khera Banquet Hall, Shahdara Tezab Mill, Delhi - 110032
+                28/18A/110, Bhola Nath Nagar Near Shahdara, Metro Station, Delhi- 110032
               </a>
             </li>
             <li className="flex items-start gap-2">
               <Mail className="mt-0.5 h-4 w-4 text-gold" />
-              <span>info@iskheratrust.org</span>
+              <span>Iskheramemorial@gmail.com</span>
             </li>
           </ul>
         </div>
